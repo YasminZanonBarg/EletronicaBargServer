@@ -1,111 +1,27 @@
 {
-  "id": "6c9f2f37-1446-46a6-8fc7-36ff289d988e",
+  "id": "b0406b6c-b99e-4986-bd03-f6218a6a2c74",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.bairro": {
-      "name": "bairro",
-      "schema": "",
-      "columns": {
-        "id_bairro": {
-          "name": "id_bairro",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "nome_bairro": {
-          "name": "nome_bairro",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "id_cidade": {
-          "name": "id_cidade",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "bairro_id_cidade_cidade_id_cidade_fk": {
-          "name": "bairro_id_cidade_cidade_id_cidade_fk",
-          "tableFrom": "bairro",
-          "tableTo": "cidade",
-          "columnsFrom": [
-            "id_cidade"
-          ],
-          "columnsTo": [
-            "id_cidade"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "public.cep": {
       "name": "cep",
       "schema": "",
       "columns": {
-        "id_cep": {
-          "name": "id_cep",
+        "codigo_cep": {
+          "name": "codigo_cep",
           "type": "text",
           "primaryKey": true,
           "notNull": true
         },
-        "cep": {
-          "name": "cep",
+        "estado": {
+          "name": "estado",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "id_cidade": {
-          "name": "id_cidade",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "cep_id_cidade_cidade_id_cidade_fk": {
-          "name": "cep_id_cidade_cidade_id_cidade_fk",
-          "tableFrom": "cep",
-          "tableTo": "cidade",
-          "columnsFrom": [
-            "id_cidade"
-          ],
-          "columnsTo": [
-            "id_cidade"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.cidade": {
-      "name": "cidade",
-      "schema": "",
-      "columns": {
-        "id_cidade": {
-          "name": "id_cidade",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "nome_cidade": {
-          "name": "nome_cidade",
+        "cidade": {
+          "name": "cidade",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -247,14 +163,14 @@
           "primaryKey": true,
           "notNull": true
         },
-        "id_bairro": {
-          "name": "id_bairro",
+        "cep": {
+          "name": "cep",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "id_cep": {
-          "name": "id_cep",
+        "bairro": {
+          "name": "bairro",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -280,28 +196,15 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "endereco_id_bairro_bairro_id_bairro_fk": {
-          "name": "endereco_id_bairro_bairro_id_bairro_fk",
-          "tableFrom": "endereco",
-          "tableTo": "bairro",
-          "columnsFrom": [
-            "id_bairro"
-          ],
-          "columnsTo": [
-            "id_bairro"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "endereco_id_cep_cep_id_cep_fk": {
-          "name": "endereco_id_cep_cep_id_cep_fk",
+        "endereco_cep_cep_codigo_cep_fk": {
+          "name": "endereco_cep_cep_codigo_cep_fk",
           "tableFrom": "endereco",
           "tableTo": "cep",
           "columnsFrom": [
-            "id_cep"
+            "cep"
           ],
           "columnsTo": [
-            "id_cep"
+            "codigo_cep"
           ],
           "onDelete": "no action",
           "onUpdate": "no action"

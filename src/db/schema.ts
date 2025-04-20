@@ -8,27 +8,16 @@ export const usuario = pgTable('usuario', {
   senha: text('senha').notNull(),
 })
 
-export const cidade = pgTable('cidade', {
-  id: text('id_cidade').primaryKey().$defaultFn(() => createId()),
-  nome: text('nome_cidade').notNull(),
-})
-
-export const bairro = pgTable('bairro', {
-  id: text('id_bairro').primaryKey().$defaultFn(() => createId()),
-  nome: text('nome_bairro').notNull(),
-  idCidade: text('id_cidade').references(() => cidade.id).notNull(),
-})
-
 export const cep = pgTable('cep', {
-  id: text('id_cep').primaryKey().$defaultFn(() => createId()),
-  cep: text('cep').notNull(),
-  idCidade: text('id_cidade').references(() => cidade.id).notNull(),
+  codigoCep: text('codigo_cep').primaryKey().$defaultFn(() => createId()),
+  estado: text('estado').notNull(),
+  cidade: text('cidade').notNull(),
 })
 
 export const endereco = pgTable('endereco', {
   id: text('id_endereco').primaryKey().$defaultFn(() => createId()),
-  idBairro: text('id_bairro').references(() => bairro.id).notNull(),
-  idCep: text('id_cep').references(() => cep.id).notNull(),
+  cep: text('cep').references(() => cep.codigoCep).notNull(),
+  bairro: text('bairro').notNull(),
   logradouro: text('logradouro').notNull(),
   numeroEndereco: integer('numero_endereco').notNull(),
   complemento: text('complemento'),
@@ -39,7 +28,7 @@ export const cliente = pgTable('cliente', {
   idEndereco: text('id_endereco').references(() => endereco.id).notNull(),
   dataCadastro: timestamp('data_cadastro', { withTimezone: true })
     .notNull()
-    .defaultNow(), //Adicionar no MER
+    .defaultNow(),
   tipoPessoa: text('tipo_pessoa').notNull(),
   sexo: text('sexo').notNull(),
   dataNascimento: date('data_nascimento').notNull(),
