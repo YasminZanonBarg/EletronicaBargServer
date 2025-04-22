@@ -3,11 +3,14 @@ import { serializerCompiler, validatorCompiler, type ZodTypeProvider } from "fas
 import fastifyCors from "@fastify/cors"
 import { createLoginRoute } from "./routes/create-login"
 import { getServiceOrderRoute } from "./routes/get-service-order"
+import { deleteServiceOrderRoute } from "./routes/delete-service-order"
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.register(fastifyCors, {
-  origin: '*' // qualquer frontend pode conectar com meu backend, em prod se substitui com a URL do frontend
+  origin: '*', // qualquer frontend pode conectar com meu backend, em prod se substitui com a URL do frontend
+  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
 })
 
 app.setValidatorCompiler(validatorCompiler)
@@ -15,6 +18,7 @@ app.setSerializerCompiler(serializerCompiler)
 
 app.register(createLoginRoute)
 app.register(getServiceOrderRoute)
+app.register(deleteServiceOrderRoute)
 
 app.listen({
   port: 3333,
