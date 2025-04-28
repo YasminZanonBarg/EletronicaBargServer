@@ -10,6 +10,7 @@ import { getClientsRoute } from "./routes/get-clients"
 import { deleteClientRoute } from "./routes/delete-client"
 import { createAndGetCepRoute } from './routes/create-and-get-cep'
 import { createClientRoute } from './routes/create-client'
+import { createAddressRoute } from './routes/create-address'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -31,6 +32,7 @@ app.register(getClientsRoute)
 app.register(deleteClientRoute)
 app.register(createAndGetCepRoute)
 app.register(createClientRoute)
+app.register(createAddressRoute)
 
 app.listen({
   port: 3333,
