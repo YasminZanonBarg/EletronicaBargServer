@@ -8,6 +8,8 @@ import { createServiceOrderRoute } from "./routes/create-service-order"
 import { getClientByCpfRoute } from "./routes/get-client-by-cpf"
 import { getClientsRoute } from "./routes/get-clients"
 import { deleteClientRoute } from "./routes/delete-client"
+import { createAndGetCepRoute } from './routes/create-and-get-cep'
+import { createClientRoute } from './routes/create-client'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -27,6 +29,8 @@ app.register(createServiceOrderRoute)
 app.register(getClientByCpfRoute)
 app.register(getClientsRoute)
 app.register(deleteClientRoute)
+app.register(createAndGetCepRoute)
+app.register(createClientRoute)
 
 app.listen({
   port: 3333,
