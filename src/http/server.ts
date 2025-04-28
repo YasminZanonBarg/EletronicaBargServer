@@ -4,6 +4,8 @@ import fastifyCors from "@fastify/cors"
 import { createLoginRoute } from "./routes/create-login"
 import { getServiceOrderRoute } from "./routes/get-service-order"
 import { deleteServiceOrderRoute } from "./routes/delete-service-order"
+import { createServiceOrderRoute } from "./routes/create-service-order"
+import { getClientByCpfRoute } from "./routes/get-client-by-cpf"
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -19,6 +21,8 @@ app.setSerializerCompiler(serializerCompiler)
 app.register(createLoginRoute)
 app.register(getServiceOrderRoute)
 app.register(deleteServiceOrderRoute)
+app.register(createServiceOrderRoute)
+app.register(getClientByCpfRoute)
 
 app.listen({
   port: 3333,

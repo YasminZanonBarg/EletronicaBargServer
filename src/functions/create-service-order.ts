@@ -1,11 +1,9 @@
 import { db } from "../db"
 import { ordemServico } from "../db/schema"
 
-//Deixar explicíto o que não é obrigatorio
-//Validar se dá certo o preenchimento default da situacao
 interface CreateServiceOrderRequest {
   idCliente: string
-  dataSaida?: string
+  dataSaida?: Date | null
   aparelho: string
   marca: string
   modelo: string
@@ -13,33 +11,33 @@ interface CreateServiceOrderRequest {
   defeito: string
   acessorios: string
   localizacaoAparelho: string
-  preOrcamento?: number
-  valorMaoDeObra?: number
-  valorPecas?: number
-  valorTotal?: number
-  motivos?: string
-  notas?: string
+  preOrcamento?: string | null //Decimal do ORM retorna como string
+  valorMaoDeObra?: string | null
+  valorPecas?: string | null
+  valorTotal?: string | null
+  motivos?: string | null
+  notas?: string | null
 }
 
-export async function createServiceOrder({ 
-    idCliente, dataSaida, aparelho, marca, modelo, serie, defeito, acessorios, localizacaoAparelho, 
-    preOrcamento, valorMaoDeObra, valorPecas, valorTotal, motivos, notas
+export async function createServiceOrder({
+  idCliente, dataSaida, aparelho, marca, modelo, serie, defeito, acessorios, localizacaoAparelho,
+  preOrcamento, valorMaoDeObra, valorPecas, valorTotal, motivos, notas
 }: CreateServiceOrderRequest) {
   const result = await db.insert(ordemServico).values({
-    idCliente, 
-    dataSaida, 
-    aparelho, 
-    marca, 
-    modelo, 
-    serie, 
-    defeito, 
-    acessorios, 
-    localizacaoAparelho, 
-    preOrcamento, 
-    valorMaoDeObra, 
-    valorPecas, 
-    valorTotal, 
-    motivos, 
+    idCliente,
+    dataSaida,
+    aparelho,
+    marca,
+    modelo,
+    serie,
+    defeito,
+    acessorios,
+    localizacaoAparelho,
+    preOrcamento,
+    valorMaoDeObra,
+    valorPecas,
+    valorTotal,
+    motivos,
     notas
   }).returning()
 
@@ -49,4 +47,3 @@ export async function createServiceOrder({
     serviceOrder,
   }
 }
-
