@@ -6,7 +6,7 @@ export const createAndGetCepRoute: FastifyPluginAsyncZod = async (app, _opts) =>
   app.post('/create-and-get-cep', {
     schema: {
       body: z.object({
-        codigoCep: z.string()
+        codigoCep: z.string().min(8)
       }),
       response: {
         200: z.object({

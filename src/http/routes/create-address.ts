@@ -13,15 +13,18 @@ export const createAddressRoute: FastifyPluginAsyncZod = async (app, _opts) => {
         complemento: z.string().nullable().optional()
       }),
     }
-  }, async (request) => {
+  }, async (request, reply) => {
     const { cep, bairro, logradouro, numeroEndereco, complemento } = request.body
 
-    await createAddress({
+    const { idEndereco } = await createAddress({
       cep,
       bairro,
       logradouro,
       numeroEndereco,
       complemento
     })
+
+    return reply.send({ idEndereco })
   })
-};
+}
+

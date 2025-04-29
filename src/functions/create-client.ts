@@ -1,8 +1,8 @@
 import { db } from "../db";
 import { cliente } from "../db/schema";
+import { eq } from "drizzle-orm"; // Importante ter isso!
 
 interface CreateClientRequest {
-  // Secção - Dados Pessoais
   tipoPessoa: string
   sexo: string
   dataNascimento: Date
@@ -11,9 +11,7 @@ interface CreateClientRequest {
   rg: string
   filiacao: string
   observacao?: string | null
-  // Secção - Endereço
   idEndereco: string
-  // Secção - Contato 
   celular1: string
   celular2?: string | null
   telefone1?: string | null
@@ -35,7 +33,16 @@ export async function createClient({
   telefone1,
   telefone2
 }: CreateClientRequest) {
-  const dataNascimentoFormatada = dataNascimento.toISOString().split('T')[0]
+  // Primeiro: verificar se já existe CPF cadastrado
+  const existingClient = await db.query.cliente.findFirst({
+    where: eq(cliente.cpf, cpf),
+  });
+
+  if (existingClient) {
+    throw new Error('CPF já cadastrado.');
+  }
+
+  const dataNascimentoFormatada = dataNascimento.toISOString().split('T')[0];
 
   const result = await db.insert(cliente).values({
     idEndereco,
@@ -51,9 +58,9 @@ export async function createClient({
     celular2,
     telefone1,
     telefone2,
-  }).returning()
+  }).returning();
 
-  const newClient = result[0]
+  const newClient = result[0];
 
   return {
     client: newClient,
