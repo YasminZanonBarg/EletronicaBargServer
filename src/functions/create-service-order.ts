@@ -3,7 +3,6 @@ import { ordemServico } from "../db/schema"
 
 interface CreateServiceOrderRequest {
   idCliente: string
-  dataSaida?: Date | null
   aparelho: string
   marca: string
   modelo: string
@@ -20,12 +19,11 @@ interface CreateServiceOrderRequest {
 }
 
 export async function createServiceOrder({
-  idCliente, dataSaida, aparelho, marca, modelo, serie, defeito, acessorios, localizacaoAparelho,
+  idCliente, aparelho, marca, modelo, serie, defeito, acessorios, localizacaoAparelho,
   preOrcamento, valorMaoDeObra, valorPecas, valorTotal, motivos, notas
 }: CreateServiceOrderRequest) {
   const result = await db.insert(ordemServico).values({
     idCliente,
-    dataSaida,
     aparelho,
     marca,
     modelo,
