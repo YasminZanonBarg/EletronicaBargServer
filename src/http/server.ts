@@ -14,6 +14,7 @@ import { createAddressRoute } from './routes/create-address'
 import { updateClientRoute } from './routes/update-client'
 import { updateAddressRoute } from './routes/update-address'
 import { updateCepRoute } from './routes/update-cep'
+import { updateServiceOrderRoute } from './routes/update-service-order'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -39,6 +40,7 @@ app.register(createAddressRoute)
 app.register(updateClientRoute)
 app.register(updateAddressRoute)
 app.register(updateCepRoute)
+app.register(updateServiceOrderRoute)
 
 app.listen({
   port: 3333,

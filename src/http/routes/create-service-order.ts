@@ -7,7 +7,6 @@ export const createServiceOrderRoute: FastifyPluginAsyncZod = async (app, _opts)
     schema: {
       body: z.object({
         idCliente: z.string(),
-        dataSaida: z.coerce.date().nullable().optional(),
         aparelho: z.string(),
         marca: z.string(),
         modelo: z.string(),
@@ -25,14 +24,13 @@ export const createServiceOrderRoute: FastifyPluginAsyncZod = async (app, _opts)
     }
   }, async (request) => {
     const {
-      idCliente, dataSaida, aparelho, marca, modelo, serie, defeito, acessorios,
+      idCliente, aparelho, marca, modelo, serie, defeito, acessorios,
       localizacaoAparelho, preOrcamento, valorMaoDeObra, valorPecas,
       valorTotal, motivos, notas
     } = request.body
 
     await createServiceOrder({
       idCliente,
-      dataSaida,
       aparelho,
       marca,
       modelo,
