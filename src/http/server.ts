@@ -13,12 +13,13 @@ import { createClientRoute } from './routes/create-client'
 import { createAddressRoute } from './routes/create-address'
 import { updateClientRoute } from './routes/update-client'
 import { updateAddressRoute } from './routes/update-address'
+import { updateCepRoute } from './routes/update-cep'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.register(fastifyCors, {
   origin: '*', // qualquer frontend pode conectar com meu backend, em prod se substitui com a URL do frontend
-  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type']
 })
 
@@ -37,6 +38,7 @@ app.register(createClientRoute)
 app.register(createAddressRoute)
 app.register(updateClientRoute)
 app.register(updateAddressRoute)
+app.register(updateCepRoute)
 
 app.listen({
   port: 3333,
