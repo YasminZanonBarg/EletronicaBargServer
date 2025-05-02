@@ -15,6 +15,8 @@ import { updateClientRoute } from './routes/update-client'
 import { updateAddressRoute } from './routes/update-address'
 import { updateCepRoute } from './routes/update-cep'
 import { updateServiceOrderRoute } from './routes/update-service-order'
+import { getBigNumbersMetricsRoute } from './routes/get-big-numbers-metrics'
+
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -41,6 +43,7 @@ app.register(updateClientRoute)
 app.register(updateAddressRoute)
 app.register(updateCepRoute)
 app.register(updateServiceOrderRoute)
+app.register(getBigNumbersMetricsRoute)
 
 app.listen({
   port: 3333,
