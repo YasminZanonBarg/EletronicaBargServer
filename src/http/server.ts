@@ -17,6 +17,7 @@ import { updateCepRoute } from './routes/update-cep'
 import { updateServiceOrderRoute } from './routes/update-service-order'
 import { getBigNumbersMetricsRoute } from './routes/get-big-numbers-metrics'
 import { getPeriodDefectsMetricsRoute } from './routes/get-period-defects-metrics'
+import { getOrdersPerDayMetricsRoute } from './routes/get-orders-per-day-metrics'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -45,6 +46,7 @@ app.register(updateCepRoute)
 app.register(updateServiceOrderRoute)
 app.register(getBigNumbersMetricsRoute)
 app.register(getPeriodDefectsMetricsRoute)
+app.register(getOrdersPerDayMetricsRoute)
 
 app.listen({
   port: 3333,
