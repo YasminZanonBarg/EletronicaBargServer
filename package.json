@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
-    "node": "22.12"
+    "node": ">=22.12"
   },
   "scripts": {
     "dev": "tsx watch --env-file .env src/http/server.ts",
-    "seed": "tsx --env-file .env src/db/seed.ts"
+    "seed": "tsx --env-file .env src/db/seed.ts",
+    "build": "tsc -p tsconfig.build.json"
   },
   "keywords": [],
   "author": "",
