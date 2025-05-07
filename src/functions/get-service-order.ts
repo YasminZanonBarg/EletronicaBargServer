@@ -31,7 +31,7 @@ export async function getServiceOrder() {
       cliente,
       eq(cliente.id, ordemServico.idCliente)
     )
-    .orderBy(desc(ordemServico.dataEntrada))
+    .orderBy(desc(ordemServico.numeroOrdemServico))
 
   return {
     result,
