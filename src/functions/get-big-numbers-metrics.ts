@@ -18,8 +18,8 @@ export async function getBigNumbersMetrics({ start_date, final_date }: GetBigNum
     const consertos = await db
       .select({
         qtd_consertos: sql<number>`COUNT(${ordemServico.id})`,
-        valor_consertos: sql<number>`SUM(${ordemServico.valorTotal})`,
-        valor_medio_consertos: sql<number>`ROUND(SUM(${ordemServico.valorTotal}) / COUNT(${ordemServico.id}), 2)`
+        valor_consertos: sql<number>`SUM(COALESCE(${ordemServico.valorTotal}, 0))`,
+        valor_medio_consertos: sql<number>`ROUND(SUM(COALESCE(${ordemServico.valorTotal}, 0)) / COUNT(${ordemServico.id}), 2)`
       })
       .from(ordemServico)
       .where(
