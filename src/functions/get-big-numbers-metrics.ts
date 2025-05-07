@@ -46,12 +46,12 @@ export async function getBigNumbersMetrics({ start_date, final_date }: GetBigNum
     const a = aprovados[0] || {}
 
     return {
-      qtd_consertos: c.qtd_consertos ?? 0,
-      valor_consertos: c.valor_consertos ?? 0,
-      valor_medio_consertos: c.valor_medio_consertos ?? 0,
-      aprovados: a.aprovados ?? 0,
-      taxa_aprovacao: a.total ? Number(((a.aprovados ?? 0) * 100 / a.total).toFixed(2)) : 0
-    }
+      qtd_consertos: Number(c.qtd_consertos ?? 0),
+      valor_consertos: Number(c.valor_consertos ?? 0),
+      valor_medio_consertos: Number(c.valor_medio_consertos ?? 0),
+      aprovados: Number(a.aprovados ?? 0),
+      taxa_aprovacao: Number(a.total ? ((Number(a.aprovados ?? 0) * 100) / Number(a.total)).toFixed(2) : 0)
+    }    
 
   } catch (error) {
     // Caso ocorra um erro com a consulta ao banco
