@@ -478,7 +478,8 @@ async function seed() {
       valorPecas: "150.00",
       valorTotal: "350.00",
       motivos: "Tela",
-      notas: "50% do pagamento foi realizado na entrega do aparelho."
+      notas: "50% do pagamento foi realizado na entrega do aparelho.",
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[3].id,
@@ -553,7 +554,8 @@ async function seed() {
       preOrcamento: "260.00",
       valorMaoDeObra: "120.00",
       valorPecas: "100.00",
-      valorTotal: "220.00"
+      valorTotal: "220.00",
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[8].id,
@@ -579,7 +581,8 @@ async function seed() {
       localizacaoAparelho: "Prateleira 3 - A",
       situacao: "Sem conserto e retirado",
       preOrcamento: "400.00",
-      motivos: "Sem peça disponível para reposição"
+      motivos: "Sem peça disponível para reposição",
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[10].id,
@@ -638,7 +641,8 @@ async function seed() {
       valorPecas: "150.00",
       valorTotal: "290.00",
       motivos: "Substituição do painel danificado",
-      notas: "Cliente retirou em 24h após contato."
+      notas: "Cliente retirou em 24h após contato.",
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[14].id,
@@ -708,7 +712,8 @@ async function seed() {
       localizacaoAparelho: "Prateleira 6 - B",
       situacao: "Sem conserto e retirado",
       preOrcamento: "210.00",
-      motivos: "Sem peças disponíveis no fornecedor"
+      motivos: "Sem peças disponíveis no fornecedor",
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[19].id,
@@ -739,7 +744,8 @@ async function seed() {
       preOrcamento: "240.00",
       valorMaoDeObra: "100.00",
       valorPecas: "100.00",
-      valorTotal: "200.00"
+      valorTotal: "200.00",
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[21].id,
@@ -800,7 +806,8 @@ async function seed() {
       localizacaoAparelho: "Prateleira 8 - B",
       situacao: "Sem conserto e retirado",
       preOrcamento: "210.00",
-      motivos: "Defeito irreversível na placa principal"
+      motivos: "Defeito irreversível na placa principal",
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[25].id,
@@ -816,7 +823,8 @@ async function seed() {
       valorMaoDeObra: "180.00",
       valorPecas: "190.00",
       valorTotal: "370.00",
-      motivos: "Tela danificada por pressão"
+      motivos: "Tela danificada por pressão",
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[26].id,
