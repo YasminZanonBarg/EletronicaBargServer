@@ -49,7 +49,7 @@ export const ordemServico = pgTable('ordem_servico', {
   numeroOrdemServico: serial('numero_ordem_servico').notNull().unique(),
   dataEntrada: timestamp('data_entrada', { withTimezone: true })
     .notNull()
-    .defaultNow(),
+    .$defaultFn(() => new Date(Date.now())),
   dataSaida: timestamp('data_saida', { withTimezone: true }),
   situacao: text('situacao', {
     enum: [
