@@ -9,8 +9,9 @@ interface getOrdersPerDayMetricsRequest {
 }
 
 export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrdersPerDayMetricsRequest) {
-  const startDate = dayjs(start_date).startOf('day').format('YYYY-MM-DD HH:mm:ss') // Início do dia 12
-  const finalDate = dayjs(final_date).endOf('day').format('YYYY-MM-DD HH:mm:ss')   // Fim do dia 12
+  const startDate = dayjs(start_date).startOf('day').toDate()
+  const finalDate = dayjs(final_date).endOf('day').toDate()
+
 
   console.log(startDate)
   console.log(finalDate)
@@ -23,8 +24,8 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
       })
       .from(ordemServico)
       .where(
-        between(ordemServico.dataEntrada, startDate, finalDate)
-      )      
+        sql`${ordemServico.dataEntrada} >= ${startDate} AND ${ordemServico.dataEntrada} <= ${finalDate}`
+      )           
       .groupBy(sql`DATE(${ordemServico.dataEntrada})`)
       .orderBy(sql`DATE(${ordemServico.dataEntrada})`)
 
