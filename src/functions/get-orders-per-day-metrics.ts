@@ -14,8 +14,8 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
   dayjs.extend(utc)
   dayjs.extend(timezone)
 
-  const startDate = dayjs(start_date).tz("America/Sao_Paulo").startOf("day").toDate()
-  const finalDate = dayjs(final_date).tz("America/Sao_Paulo").endOf("day").toDate()
+  const startDate = dayjs(start_date).tz("America/Sao_Paulo").startOf("day").utc().toDate()
+  const finalDate = dayjs(final_date).tz("America/Sao_Paulo").endOf("day").utc().toDate()
 
   try {
     const resultados = await db
