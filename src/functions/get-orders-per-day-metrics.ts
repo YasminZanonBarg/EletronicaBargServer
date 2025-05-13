@@ -1,6 +1,6 @@
 import { db } from "../db"
 import { ordemServico } from "../db/schema"
-import { and, count, gte, lte, sql } from "drizzle-orm"
+import { and, between, gte, lte, sql } from "drizzle-orm"
 import dayjs from "dayjs"
 
 interface getOrdersPerDayMetricsRequest {
@@ -9,18 +9,14 @@ interface getOrdersPerDayMetricsRequest {
 }
 
 export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrdersPerDayMetricsRequest) {
-  const startDate = dayjs(start_date).startOf('day').toDate()
-  const finalDate = dayjs(final_date).endOf('day').toDate()
-
-
-  console.log(startDate)
-  console.log(finalDate)
+  const startDate = dayjs(start_date).startOf('day').toDate() // Começa o dia (00:00:00)
+  const finalDate = dayjs(final_date).endOf('day').toDate() // Termina o dia (23:59:59.999)
 
   try {
     const resultados = await db
       .select({
-        dataEntrada: ordemServico.dataEntrada,
-        quantidade: count(ordemServico.id).as("quantidade")
+        dataEntrada: sql`DATE(${ordemServico.dataEntrada})`.as("dataEntrada"),
+        quantidade: sql<number>`COUNT(${ordemServico.id})`.as("quantidade")
       })
       .from(ordemServico)
       .where(
@@ -28,12 +24,12 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
           gte(ordemServico.dataEntrada, startDate),
           lte(ordemServico.dataEntrada, finalDate)
         )
-      )           
+      )
       .groupBy(sql`DATE(${ordemServico.dataEntrada})`)
       .orderBy(sql`DATE(${ordemServico.dataEntrada})`)
 
     return resultados.map(result => ({
-      dataEntrada: dayjs(result.dataEntrada).format("YYYY-MM-DD"),
+      dataEntrada: result.dataEntrada,
       quantidade: Number(result.quantidade)
     }))
 
