@@ -34,7 +34,7 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
       .orderBy(sql`DATE(${ordemServico.dataEntrada})`)
 
     return resultados.map(result => ({
-      dataEntrada: dayjs(result.dataEntrada as string).tz('America/Sao_Paulo').format('YYYY-MM-DD'),
+      dataEntrada: result.dataEntrada,
       quantidade: Number(result.quantidade)
     }))
 
