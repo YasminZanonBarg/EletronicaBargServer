@@ -23,7 +23,7 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
       })
       .from(ordemServico)
       .where(
-        between(sql`DATE(${ordemServico.dataEntrada})`, startDate, finalDate)
+        between(ordemServico.dataEntrada, startDate, finalDate)
       )      
       .groupBy(sql`DATE(${ordemServico.dataEntrada})`)
       .orderBy(sql`DATE(${ordemServico.dataEntrada})`)
