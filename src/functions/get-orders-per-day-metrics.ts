@@ -1,6 +1,6 @@
 import { db } from "../db"
 import { ordemServico } from "../db/schema"
-import { between, sql } from "drizzle-orm"
+import { and, count, gte, lte, sql } from "drizzle-orm"
 import dayjs from "dayjs"
 
 interface getOrdersPerDayMetricsRequest {
@@ -19,18 +19,21 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
   try {
     const resultados = await db
       .select({
-        dataEntrada: sql`DATE(${ordemServico.dataEntrada})`.as("dataEntrada"),
-        quantidade: sql<number>`COUNT(${ordemServico.id})`.as("quantidade")
+        dataEntrada: ordemServico.dataEntrada,
+        quantidade: count(ordemServico.id).as("quantidade")
       })
       .from(ordemServico)
       .where(
-        sql`${ordemServico.dataEntrada} >= ${startDate} AND ${ordemServico.dataEntrada} <= ${finalDate}`
+        and(
+          gte(ordemServico.dataEntrada, startDate),
+          lte(ordemServico.dataEntrada, finalDate)
+        )
       )           
       .groupBy(sql`DATE(${ordemServico.dataEntrada})`)
       .orderBy(sql`DATE(${ordemServico.dataEntrada})`)
 
     return resultados.map(result => ({
-      dataEntrada: result.dataEntrada,
+      dataEntrada: dayjs(result.dataEntrada).format("YYYY-MM-DD"),
       quantidade: Number(result.quantidade)
     }))
 
