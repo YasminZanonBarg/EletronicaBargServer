@@ -2,6 +2,11 @@ import { db } from "../db"
 import { ordemServico } from "../db/schema"
 import { and, between, sql } from "drizzle-orm"
 import dayjs from "dayjs"
+import utc from "dayjs/plugin/utc"
+import timezone from "dayjs/plugin/timezone"
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 interface GetBigNumbersMetricsRequest {
   start_date: string
@@ -9,9 +14,8 @@ interface GetBigNumbersMetricsRequest {
 }
 
 export async function getBigNumbersMetrics({ start_date, final_date }: GetBigNumbersMetricsRequest) {
-  // Converter as datas de string para objetos Date
-  const startDate = dayjs(start_date).startOf('day').toDate() // Começa o dia (00:00:00)
-  const finalDate = dayjs(final_date).endOf('day').toDate() // Termina o dia (23:59:59.999)
+  const startDate = dayjs.tz(start_date, 'America/Sao_Paulo').startOf('day').toDate()
+  const finalDate = dayjs.tz(final_date, 'America/Sao_Paulo').endOf('day').toDate()
 
   try {
     // Cálculo de consertos realizados

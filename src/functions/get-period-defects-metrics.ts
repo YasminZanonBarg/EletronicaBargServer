@@ -2,6 +2,11 @@ import { db } from "../db"
 import { ordemServico } from "../db/schema"
 import { between, sql } from "drizzle-orm"
 import dayjs from "dayjs"
+import utc from "dayjs/plugin/utc"
+import timezone from "dayjs/plugin/timezone"
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 interface getPeriodDefectsMetricsRequest {
   start_date: string
@@ -9,8 +14,8 @@ interface getPeriodDefectsMetricsRequest {
 }
 
 export async function getPeriodDefectsMetrics({ start_date, final_date }: getPeriodDefectsMetricsRequest) {
-  const startDate = dayjs(start_date).startOf('day').toDate() // Começa o dia (00:00:00)
-  const finalDate = dayjs(final_date).endOf('day').toDate() // Termina o dia (23:59:59.999)
+    const startDate = dayjs.tz(start_date, 'America/Sao_Paulo').startOf('day').toDate()
+    const finalDate = dayjs.tz(final_date, 'America/Sao_Paulo').endOf('day').toDate()
 
   try {
     const resultados = await db
