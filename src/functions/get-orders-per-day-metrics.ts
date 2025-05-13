@@ -2,6 +2,12 @@ import { db } from "../db"
 import { ordemServico } from "../db/schema"
 import { and, between, gte, lte, sql } from "drizzle-orm"
 import dayjs from "dayjs"
+import utc from "dayjs/plugin/utc"
+import timezone from "dayjs/plugin/timezone"
+
+// Ativa os plugins
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 interface getOrdersPerDayMetricsRequest {
   start_date: string
@@ -9,9 +15,10 @@ interface getOrdersPerDayMetricsRequest {
 }
 
 export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrdersPerDayMetricsRequest) {
-  const startDate = dayjs(start_date).startOf('day').toDate() // Começa o dia (00:00:00)
-  const finalDate = dayjs(final_date).endOf('day').toDate() // Termina o dia (23:59:59.999)
-
+  // Ajusta o timezone para America/Sao_Paulo (UTC-3)
+  const startDate = dayjs.tz(start_date, 'America/Sao_Paulo').startOf('day').toDate()
+  const finalDate = dayjs.tz(final_date, 'America/Sao_Paulo').endOf('day').toDate()
+  
   try {
     const resultados = await db
       .select({
