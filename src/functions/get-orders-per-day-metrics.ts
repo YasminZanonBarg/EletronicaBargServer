@@ -2,8 +2,6 @@ import { db } from "../db"
 import { ordemServico } from "../db/schema"
 import { between, sql } from "drizzle-orm"
 import dayjs from "dayjs"
-import utc from "dayjs/plugin/utc"
-import timezone from "dayjs/plugin/timezone"
 
 interface getOrdersPerDayMetricsRequest {
   start_date: string
@@ -11,11 +9,8 @@ interface getOrdersPerDayMetricsRequest {
 }
 
 export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrdersPerDayMetricsRequest) {
-  dayjs.extend(utc)
-  dayjs.extend(timezone)
-
-  const startDate = dayjs(start_date).tz("America/Sao_Paulo").startOf("day").utc().toDate()
-  const finalDate = dayjs(final_date).tz("America/Sao_Paulo").endOf("day").utc().toDate()
+  const startDate = dayjs(start_date).format('YYYY-MM-DD')
+  const finalDate = dayjs(final_date).format('YYYY-MM-DD')
 
   try {
     const resultados = await db
@@ -25,8 +20,8 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
       })
       .from(ordemServico)
       .where(
-        between(ordemServico.dataEntrada, startDate, finalDate)
-      )
+        between(sql`DATE(${ordemServico.dataEntrada})`, startDate, finalDate)
+      )      
       .groupBy(sql`DATE(${ordemServico.dataEntrada})`)
       .orderBy(sql`DATE(${ordemServico.dataEntrada})`)
 
