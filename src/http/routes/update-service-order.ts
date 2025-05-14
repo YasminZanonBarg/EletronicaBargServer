@@ -6,6 +6,7 @@ export const updateServiceOrderRoute: FastifyPluginAsyncZod = async (app, _opts)
   app.patch("/update-service-order/:id", {
     schema: {
       body: z.object({
+        idCliente: z.string().optional(),
         situacao: z.string().optional(),
         aparelho: z.string().optional(),
         marca: z.string().optional(),
