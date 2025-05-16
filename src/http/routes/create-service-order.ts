@@ -19,14 +19,15 @@ export const createServiceOrderRoute: FastifyPluginAsyncZod = async (app, _opts)
         valorPecas: z.string().nullable().optional(),
         valorTotal: z.string().nullable().optional(),
         motivos: z.string().nullable().optional(),
-        notas: z.string().nullable().optional()
+        notas: z.string().nullable().optional(),
+        flagUrgencia: z.boolean().optional()
       })
     }
   }, async (request) => {
     const {
       idCliente, aparelho, marca, modelo, serie, defeito, acessorios,
       localizacaoAparelho, preOrcamento, valorMaoDeObra, valorPecas,
-      valorTotal, motivos, notas
+      valorTotal, motivos, notas, flagUrgencia
     } = request.body
 
     await createServiceOrder({
@@ -43,7 +44,8 @@ export const createServiceOrderRoute: FastifyPluginAsyncZod = async (app, _opts)
       valorPecas,
       valorTotal,
       motivos,
-      notas
+      notas,
+      flagUrgencia
     })
   })
 }

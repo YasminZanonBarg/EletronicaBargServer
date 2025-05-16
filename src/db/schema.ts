@@ -1,4 +1,4 @@
-import { pgTable, text, integer, timestamp, decimal, date, serial } from 'drizzle-orm/pg-core'
+import { pgTable, text, integer, timestamp, decimal, date, serial, boolean } from 'drizzle-orm/pg-core'
 import { createId } from '@paralleldrive/cuid2'
 
 export const usuario = pgTable('usuario', {
@@ -74,5 +74,6 @@ export const ordemServico = pgTable('ordem_servico', {
   valorPecas: decimal('valor_pecas'),
   valorTotal: decimal('valor_total'),
   motivos: text('motivos'),
-  notas: text('notas')
+  notas: text('notas'),
+  flagUrgencia: boolean("flag_urgencia").default(false).notNull()
 })

@@ -24,7 +24,8 @@ export async function getServiceOrder() {
       valorPecas: ordemServico.valorPecas,
       valorTotal: ordemServico.valorTotal,
       motivos: ordemServico.motivos,
-      notas: ordemServico.notas
+      notas: ordemServico.notas,
+      flagUrgencia: ordemServico.flagUrgencia
     })
     .from(ordemServico)
     .leftJoin(

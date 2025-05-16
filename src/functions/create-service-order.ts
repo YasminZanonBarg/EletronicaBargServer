@@ -16,11 +16,12 @@ interface CreateServiceOrderRequest {
   valorTotal?: string | null
   motivos?: string | null
   notas?: string | null
+  flagUrgencia?: boolean
 }
 
 export async function createServiceOrder({
   idCliente, aparelho, marca, modelo, serie, defeito, acessorios, localizacaoAparelho,
-  preOrcamento, valorMaoDeObra, valorPecas, valorTotal, motivos, notas
+  preOrcamento, valorMaoDeObra, valorPecas, valorTotal, motivos, notas, flagUrgencia
 }: CreateServiceOrderRequest) {
   const result = await db.insert(ordemServico).values({
     idCliente,
@@ -36,7 +37,8 @@ export async function createServiceOrder({
     valorPecas,
     valorTotal,
     motivos,
-    notas
+    notas,
+    flagUrgencia
   }).returning()
 
   const serviceOrder = result[0] //Necessário pegar a primeira posição, pois o insert retorna um array

@@ -21,6 +21,7 @@ export const updateServiceOrderRoute: FastifyPluginAsyncZod = async (app, _opts)
         valorTotal: z.string().nullable().optional(),
         motivos: z.string().nullable().optional(),
         notas: z.string().nullable().optional(),
+        flagUrgencia: z.boolean().optional()
       }),
       params: z.object({
         id: z.string(),
