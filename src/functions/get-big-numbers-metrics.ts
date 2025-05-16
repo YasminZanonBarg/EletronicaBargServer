@@ -37,13 +37,14 @@ export async function getBigNumbersMetrics({ start_date, final_date }: GetBigNum
     const aprovados = await db
       .select({
         total: sql<number>`SUM(CASE 
-          WHEN ${ordemServico.situacao} IN ('Aguardando orçamento', 'Pendente aprovação', 'Pendente conserto', 'Consertado', 'Consertado e retirado', 'Sem conserto e retirado', 'Conserto negado') THEN 1 ELSE 0 END)`,
+          WHEN ${ordemServico.situacao} IN ('Consertado e retirado', 'Sem conserto e retirado') THEN 1 ELSE 0 END)`,
         aprovados: sql<number>`SUM(CASE 
-          WHEN ${ordemServico.situacao} IN ('Pendente conserto', 'Consertado', 'Consertado e retirado') THEN 1 ELSE 0 END)`
+          WHEN ${ordemServico.situacao} IN ('Consertado e retirado') THEN 1 ELSE 0 END)`
       })
       .from(ordemServico)
       .where(
-        between(ordemServico.dataEntrada, startDate, finalDate)
+        between(ordemServico.dataSaida
+          , startDate, finalDate)
       )
 
     const c = consertos[0] || {}
