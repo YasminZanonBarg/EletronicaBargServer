@@ -445,8 +445,7 @@ async function seed() {
       localizacaoAparelho: "Prateleira 1 - lado direito",
       situacao: "Aguardando orçamento",
       preOrcamento: "250.00",
-      notas: "Cliente disse que problema começou após queda de energia.",
-      flagUrgencia: false
+      notas: "Cliente disse que problema começou após queda de energia."
     },
     {
       idCliente: clientes[1].id,
@@ -462,8 +461,7 @@ async function seed() {
       valorMaoDeObra: "100.00",
       valorPecas: "80.00",
       valorTotal: "180.00",
-      motivos: "Problema no barramento do Backlight",
-      flagUrgencia: false
+      motivos: "Problema no barramento do Backlight"
     },
     {
       idCliente: clientes[2].id,
@@ -481,8 +479,7 @@ async function seed() {
       valorTotal: "350.00",
       motivos: "Tela",
       notas: "50% do pagamento foi realizado na entrega do aparelho.",
-      dataSaida: new Date(),
-      flagUrgencia: false
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[3].id,
@@ -494,8 +491,7 @@ async function seed() {
       acessorios: "Controle remoto",
       localizacaoAparelho: "Prateleira 1 - A",
       situacao: "Aguardando orçamento",
-      preOrcamento: "250.00",
-      flagUrgencia: false
+      preOrcamento: "250.00"
     },
     {
       idCliente: clientes[4].id,
@@ -511,8 +507,7 @@ async function seed() {
       valorMaoDeObra: "120.00",
       valorPecas: "80.00",
       valorTotal: "200.00",
-      motivos: "Fonte danificada",
-      flagUrgencia: false
+      motivos: "Fonte danificada"
     },
     {
       idCliente: clientes[5].id,
@@ -528,8 +523,7 @@ async function seed() {
       valorMaoDeObra: "150.00",
       valorPecas: "180.00",
       valorTotal: "330.00",
-      motivos: "Substituição do painel",
-      flagUrgencia: false
+      motivos: "Substituição do painel"
     },
     {
       idCliente: clientes[6].id,
@@ -545,8 +539,7 @@ async function seed() {
       valorMaoDeObra: "90.00",
       valorPecas: "60.00",
       valorTotal: "150.00",
-      motivos: "Placa de áudio com falha",
-      flagUrgencia: false
+      motivos: "Placa de áudio com falha"
     },
     {
       idCliente: clientes[7].id,
@@ -562,8 +555,7 @@ async function seed() {
       valorMaoDeObra: "120.00",
       valorPecas: "100.00",
       valorTotal: "220.00",
-      dataSaida: new Date(),
-      flagUrgencia: false
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[8].id,
@@ -576,8 +568,7 @@ async function seed() {
       localizacaoAparelho: "Prateleira 2 - C",
       situacao: "Conserto negado",
       preOrcamento: "230.00",
-      motivos: "Cliente não aprovou valor",
-      flagUrgencia: false
+      motivos: "Cliente não aprovou valor"
     },
     {
       idCliente: clientes[9].id,
@@ -591,8 +582,7 @@ async function seed() {
       situacao: "Sem conserto e retirado",
       preOrcamento: "400.00",
       motivos: "Sem peça disponível para reposição",
-      dataSaida: new Date(),
-      flagUrgencia: false
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[10].id,
@@ -604,8 +594,7 @@ async function seed() {
       acessorios: "Somente cabo",
       localizacaoAparelho: "Prateleira 3 - B",
       situacao: "Aguardando orçamento",
-      preOrcamento: "150.00",
-      flagUrgencia: false
+      preOrcamento: "150.00"
     },
     {
       idCliente: clientes[11].id,
@@ -620,8 +609,7 @@ async function seed() {
       preOrcamento: "280.00",
       valorMaoDeObra: "130.00",
       valorPecas: "100.00",
-      valorTotal: "230.00",
-      flagUrgencia: false
+      valorTotal: "230.00"
     },
     {
       idCliente: clientes[12].id,
@@ -636,8 +624,7 @@ async function seed() {
       preOrcamento: "270.00",
       valorMaoDeObra: "150.00",
       valorPecas: "90.00",
-      valorTotal: "240.00",
-      flagUrgencia: false
+      valorTotal: "240.00"
     },
     {
       idCliente: clientes[13].id,
@@ -655,8 +642,7 @@ async function seed() {
       valorTotal: "290.00",
       motivos: "Substituição do painel danificado",
       notas: "Cliente retirou em 24h após contato.",
-      dataSaida: new Date(),
-      flagUrgencia: false
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[14].id,
@@ -672,8 +658,7 @@ async function seed() {
       valorMaoDeObra: "100.00",
       valorPecas: "60.00",
       valorTotal: "160.00",
-      motivos: "Placa de áudio substituída",
-      flagUrgencia: false
+      motivos: "Placa de áudio substituída"
     },
     {
       idCliente: clientes[15].id,
@@ -686,8 +671,7 @@ async function seed() {
       localizacaoAparelho: "Prateleira 5 - B",
       situacao: "Conserto negado",
       preOrcamento: "250.00",
-      motivos: "Cliente optou por não realizar conserto",
-      flagUrgencia: false
+      motivos: "Cliente optou por não realizar conserto"
     },
     {
       idCliente: clientes[16].id,
@@ -703,8 +687,7 @@ async function seed() {
       valorMaoDeObra: "130.00",
       valorPecas: "110.00",
       valorTotal: "240.00",
-      motivos: "Problema na fonte principal",
-      flagUrgencia: false
+      motivos: "Problema na fonte principal"
     },
     {
       idCliente: clientes[17].id,
@@ -716,8 +699,7 @@ async function seed() {
       acessorios: "Controle remoto e suporte",
       localizacaoAparelho: "Prateleira 6 - A",
       situacao: "Aguardando orçamento",
-      preOrcamento: "330.00",
-      flagUrgencia: false
+      preOrcamento: "330.00"
     },
     {
       idCliente: clientes[18].id,
@@ -731,8 +713,7 @@ async function seed() {
       situacao: "Sem conserto e retirado",
       preOrcamento: "210.00",
       motivos: "Sem peças disponíveis no fornecedor",
-      dataSaida: new Date(),
-      flagUrgencia: false
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[19].id,
@@ -748,8 +729,7 @@ async function seed() {
       valorMaoDeObra: "110.00",
       valorPecas: "100.00",
       valorTotal: "210.00",
-      motivos: "Barra de LEDs trocada",
-      flagUrgencia: false
+      motivos: "Barra de LEDs trocada"
     },
     {
       idCliente: clientes[20].id,
@@ -765,8 +745,7 @@ async function seed() {
       valorMaoDeObra: "100.00",
       valorPecas: "100.00",
       valorTotal: "200.00",
-      dataSaida: new Date(),
-      flagUrgencia: false
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[21].id,
@@ -782,8 +761,7 @@ async function seed() {
       valorMaoDeObra: "150.00",
       valorPecas: "180.00",
       valorTotal: "330.00",
-      motivos: "Tela quebrada após impacto",
-      flagUrgencia: false
+      motivos: "Tela quebrada após impacto"
     },
     {
       idCliente: clientes[22].id,
@@ -799,8 +777,7 @@ async function seed() {
       valorMaoDeObra: "90.00",
       valorPecas: "70.00",
       valorTotal: "160.00",
-      motivos: "Problema na saída de áudio",
-      flagUrgencia: false
+      motivos: "Problema na saída de áudio"
     },
     {
       idCliente: clientes[23].id,
@@ -816,8 +793,7 @@ async function seed() {
       valorMaoDeObra: "140.00",
       valorPecas: "120.00",
       valorTotal: "260.00",
-      motivos: "LEDs com fuga de corrente",
-      flagUrgencia: false
+      motivos: "LEDs com fuga de corrente"
     },
     {
       idCliente: clientes[24].id,
@@ -831,8 +807,7 @@ async function seed() {
       situacao: "Sem conserto e retirado",
       preOrcamento: "210.00",
       motivos: "Defeito irreversível na placa principal",
-      dataSaida: new Date(),
-      flagUrgencia: false
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[25].id,
@@ -849,8 +824,7 @@ async function seed() {
       valorPecas: "190.00",
       valorTotal: "370.00",
       motivos: "Tela danificada por pressão",
-      dataSaida: new Date(),
-      flagUrgencia: false
+      dataSaida: new Date()
     },
     {
       idCliente: clientes[26].id,
@@ -862,8 +836,7 @@ async function seed() {
       acessorios: "Cabo HDMI",
       localizacaoAparelho: "Prateleira 9 - A",
       situacao: "Aguardando orçamento",
-      preOrcamento: "210.00",
-      flagUrgencia: false
+      preOrcamento: "210.00"
     },
     {
       idCliente: clientes[27].id,
@@ -879,8 +852,7 @@ async function seed() {
       valorMaoDeObra: "140.00",
       valorPecas: "120.00",
       valorTotal: "260.00",
-      motivos: "Falha total na iluminação traseira",
-      flagUrgencia: false
+      motivos: "Falha total na iluminação traseira"
     },
     {
       idCliente: clientes[28].id,
@@ -893,8 +865,7 @@ async function seed() {
       localizacaoAparelho: "Prateleira 9 - C",
       situacao: "Conserto negado",
       preOrcamento: "390.00",
-      motivos: "Orçamento excede valor do produto",
-      flagUrgencia: false
+      motivos: "Orçamento excede valor do produto"
     },
     {
       idCliente: clientes[29].id,
@@ -910,8 +881,7 @@ async function seed() {
       valorMaoDeObra: "100.00",
       valorPecas: "90.00",
       valorTotal: "190.00",
-      motivos: "Fonte e fusível queimados",
-      flagUrgencia: false
+      motivos: "Fonte e fusível queimados"
     }
   ])
 }
