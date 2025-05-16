@@ -20,7 +20,7 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
   try {
     const resultados = await db
       .select({
-        dataEntrada: sql`DATE(${ordemServico.dataEntrada})`.as("dataEntrada"),
+        dataEntrada: sql`DATE(${ordemServico.dataEntrada} AT TIME ZONE 'America/Sao_Paulo')`.as("dataEntrada"),
         quantidade: sql<number>`COUNT(${ordemServico.id})`.as("quantidade")
       })
       .from(ordemServico)
@@ -30,8 +30,8 @@ export async function getOrdersPerDayMetrics({ start_date, final_date }: getOrde
           lte(ordemServico.dataEntrada, finalDate)
         )
       )
-      .groupBy(sql`DATE(${ordemServico.dataEntrada})`)
-      .orderBy(sql`DATE(${ordemServico.dataEntrada})`)
+      .groupBy(sql`DATE(${ordemServico.dataEntrada} AT TIME ZONE 'America/Sao_Paulo')`)
+      .orderBy(sql`DATE(${ordemServico.dataEntrada} AT TIME ZONE 'America/Sao_Paulo')`)
 
     return resultados.map(result => ({
       dataEntrada: result.dataEntrada,
