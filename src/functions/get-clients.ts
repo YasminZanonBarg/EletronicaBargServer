@@ -41,7 +41,7 @@ export async function getClients() {
       cep,
       eq(cep.codigoCep, endereco.cep)
     )
-    .orderBy(desc(cliente.dataCadastro))
+    .orderBy(desc(cliente.dataCadastro), cliente.nomeCompleto)
 
   return {
     result,
