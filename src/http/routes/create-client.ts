@@ -18,7 +18,8 @@ export const createClientRoute: FastifyPluginAsyncZod = async (app, _opts) => {
         celular1: z.string(),
         celular2: z.string().nullable().optional(),
         telefone1: z.string().nullable().optional(),
-        telefone2: z.string().nullable().optional()
+        telefone2: z.string().nullable().optional(),
+        flagNegativado: z.boolean().optional()
       })
     }
   }, async (request) => {
@@ -35,7 +36,8 @@ export const createClientRoute: FastifyPluginAsyncZod = async (app, _opts) => {
       celular1,
       celular2,
       telefone1,
-      telefone2
+      telefone2,
+      flagNegativado
     } = request.body;
 
     await createClient({
@@ -51,7 +53,8 @@ export const createClientRoute: FastifyPluginAsyncZod = async (app, _opts) => {
       celular1,
       celular2,
       telefone1,
-      telefone2
+      telefone2,
+      flagNegativado
     });
   });
 };

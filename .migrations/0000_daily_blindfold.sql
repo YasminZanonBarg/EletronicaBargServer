@@ -25,7 +25,8 @@ CREATE TABLE "cliente" (
 	"celular_1" text NOT NULL,
 	"celular_2" text,
 	"telefone_1" text,
-	"telefone_2" text
+	"telefone_2" text,
+	"flag_negativado" boolean DEFAULT false NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "endereco" (

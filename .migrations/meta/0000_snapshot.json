@@ -1,5 +1,5 @@
 {
-  "id": "041e41e4-8048-4a58-943b-3b981007a6d9",
+  "id": "0bd35d37-558f-4976-8c69-c4df61c3d89a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -129,6 +129,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "flag_negativado": {
+          "name": "flag_negativado",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
         }
       },
       "indexes": {},

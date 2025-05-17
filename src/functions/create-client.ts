@@ -16,6 +16,7 @@ interface CreateClientRequest {
   celular2?: string | null
   telefone1?: string | null
   telefone2?: string | null
+  flagNegativado?: boolean
 }
 
 export async function createClient({
@@ -31,7 +32,8 @@ export async function createClient({
   celular1,
   celular2,
   telefone1,
-  telefone2
+  telefone2,
+  flagNegativado
 }: CreateClientRequest) {
   // Primeiro: verificar se já existe CPF cadastrado
   const existingClient = await db.query.cliente.findFirst({
@@ -58,6 +60,7 @@ export async function createClient({
     celular2,
     telefone1,
     telefone2,
+    flagNegativado
   }).returning();
 
   const newClient = result[0];

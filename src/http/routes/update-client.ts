@@ -19,6 +19,7 @@ export const updateClientRoute: FastifyPluginAsyncZod = async (app, _opts) => {
         celular2: z.string().nullable().optional(),
         telefone1: z.string().nullable().optional(),
         telefone2: z.string().nullable().optional(),
+        flagNegativado: z.boolean().optional()
       }),
       params: z.object({
         id: z.string(),

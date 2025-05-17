@@ -18,6 +18,7 @@ export async function getClients() {
       rg: cliente.rg,
       filiacao: cliente.filiacao,
       observacao: cliente.observacao,
+      flagNegativado: cliente.flagNegativado,
       // Secção - endereço
       cep: cep.codigoCep,
       cidade: cep.cidade,

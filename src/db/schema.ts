@@ -41,6 +41,7 @@ export const cliente = pgTable('cliente', {
   celular2: text('celular_2'),
   telefone1: text('telefone_1'),
   telefone2: text('telefone_2'),
+  flagNegativado: boolean("flag_negativado").default(false).notNull()
 })
 
 export const ordemServico = pgTable('ordem_servico', {

@@ -24,7 +24,8 @@ export async function getClientByCpf(cpf: string) {
       celular1: cliente.celular1,
       celular2: cliente.celular2,
       telefone1: cliente.telefone1,
-      telefone2: cliente.telefone2
+      telefone2: cliente.telefone2,
+      flagNegativado: cliente.flagNegativado
     })
     .from(cliente)
     .leftJoin(

@@ -17,6 +17,7 @@ interface UpdateClientRequest {
   celular2?: string | null;
   telefone1?: string | null;
   telefone2?: string | null;
+  flagNegativado?: boolean;
 }
 
 export async function updateClient({
