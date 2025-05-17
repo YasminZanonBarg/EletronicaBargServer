@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS "ordem_servico";
+DROP TABLE IF EXISTS "usuario";
+DROP TABLE IF EXISTS "cliente";
+DROP TABLE IF EXISTS "endereco";
+DROP TABLE IF EXISTS "cep";
+
 CREATE TABLE "cep" (
 	"codigo_cep" text PRIMARY KEY NOT NULL,
 	"estado" text NOT NULL,
