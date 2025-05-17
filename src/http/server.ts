@@ -11,6 +11,7 @@ import { getClientsRoute } from "./routes/get-clients"
 import { deleteClientRoute } from "./routes/delete-client"
 import { createAndGetCepRoute } from './routes/create-and-get-cep'
 import { createClientRoute } from './routes/create-client'
+import { updateFlagNegativadoRoute } from './routes/update-flag-negativado'
 import { createAddressRoute } from './routes/create-address'
 import { updateClientRoute } from './routes/update-client'
 import { updateAddressRoute } from './routes/update-address'
@@ -41,6 +42,7 @@ app.register(getClientsRoute)
 app.register(deleteClientRoute)
 app.register(createAndGetCepRoute)
 app.register(createClientRoute)
+app.register(updateFlagNegativadoRoute)
 app.register(createAddressRoute)
 app.register(updateClientRoute)
 app.register(updateAddressRoute)
