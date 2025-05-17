@@ -1,5 +1,5 @@
 {
-  "id": "b0406b6c-b99e-4986-bd03-f6218a6a2c74",
+  "id": "041e41e4-8048-4a58-943b-3b981007a6d9",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -242,8 +242,7 @@
           "name": "data_entrada",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         },
         "data_saida": {
           "name": "data_saida",
@@ -335,6 +334,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "flag_urgencia": {
+          "name": "flag_urgencia",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
         }
       },
       "indexes": {},
