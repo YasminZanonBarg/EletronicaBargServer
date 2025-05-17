@@ -1,0 +1,425 @@
+{
+  "id": "7a3d685a-6428-49ba-bae4-8187a48a6c9a",
+  "prevId": "b0406b6c-b99e-4986-bd03-f6218a6a2c74",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.cep": {
+      "name": "cep",
+      "schema": "",
+      "columns": {
+        "codigo_cep": {
+          "name": "codigo_cep",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "estado": {
+          "name": "estado",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cidade": {
+          "name": "cidade",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.cliente": {
+      "name": "cliente",
+      "schema": "",
+      "columns": {
+        "id_cliente": {
+          "name": "id_cliente",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "id_endereco": {
+          "name": "id_endereco",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_cadastro": {
+          "name": "data_cadastro",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "tipo_pessoa": {
+          "name": "tipo_pessoa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sexo": {
+          "name": "sexo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_nascimento": {
+          "name": "data_nascimento",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nome_completo": {
+          "name": "nome_completo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cpf": {
+          "name": "cpf",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rg": {
+          "name": "rg",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "filiacao": {
+          "name": "filiacao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "observacao": {
+          "name": "observacao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "celular_1": {
+          "name": "celular_1",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "celular_2": {
+          "name": "celular_2",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "telefone_1": {
+          "name": "telefone_1",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "telefone_2": {
+          "name": "telefone_2",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "cliente_id_endereco_endereco_id_endereco_fk": {
+          "name": "cliente_id_endereco_endereco_id_endereco_fk",
+          "tableFrom": "cliente",
+          "tableTo": "endereco",
+          "columnsFrom": [
+            "id_endereco"
+          ],
+          "columnsTo": [
+            "id_endereco"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.endereco": {
+      "name": "endereco",
+      "schema": "",
+      "columns": {
+        "id_endereco": {
+          "name": "id_endereco",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "cep": {
+          "name": "cep",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bairro": {
+          "name": "bairro",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "logradouro": {
+          "name": "logradouro",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "numero_endereco": {
+          "name": "numero_endereco",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "complemento": {
+          "name": "complemento",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "endereco_cep_cep_codigo_cep_fk": {
+          "name": "endereco_cep_cep_codigo_cep_fk",
+          "tableFrom": "endereco",
+          "tableTo": "cep",
+          "columnsFrom": [
+            "cep"
+          ],
+          "columnsTo": [
+            "codigo_cep"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ordem_servico": {
+      "name": "ordem_servico",
+      "schema": "",
+      "columns": {
+        "id_ordem_servico": {
+          "name": "id_ordem_servico",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "id_cliente": {
+          "name": "id_cliente",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "numero_ordem_servico": {
+          "name": "numero_ordem_servico",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_entrada": {
+          "name": "data_entrada",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_saida": {
+          "name": "data_saida",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "situacao": {
+          "name": "situacao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'Aguardando orçamento'"
+        },
+        "aparelho": {
+          "name": "aparelho",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "marca": {
+          "name": "marca",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "modelo": {
+          "name": "modelo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "serie": {
+          "name": "serie",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "defeito": {
+          "name": "defeito",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "acessorios": {
+          "name": "acessorios",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "localizacao_aparelho": {
+          "name": "localizacao_aparelho",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pre_orcamento": {
+          "name": "pre_orcamento",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "valor_mao_de_obra": {
+          "name": "valor_mao_de_obra",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "valor_pecas": {
+          "name": "valor_pecas",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "valor_total": {
+          "name": "valor_total",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "motivos": {
+          "name": "motivos",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notas": {
+          "name": "notas",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "flag_urgencia": {
+          "name": "flag_urgencia",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ordem_servico_id_cliente_cliente_id_cliente_fk": {
+          "name": "ordem_servico_id_cliente_cliente_id_cliente_fk",
+          "tableFrom": "ordem_servico",
+          "tableTo": "cliente",
+          "columnsFrom": [
+            "id_cliente"
+          ],
+          "columnsTo": [
+            "id_cliente"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "ordem_servico_numero_ordem_servico_unique": {
+          "name": "ordem_servico_numero_ordem_servico_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "numero_ordem_servico"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.usuario": {
+      "name": "usuario",
+      "schema": "",
+      "columns": {
+        "id_usuario": {
+          "name": "id_usuario",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nome_usuario": {
+          "name": "nome_usuario",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo_usuario": {
+          "name": "tipo_usuario",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "senha": {
+          "name": "senha",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
