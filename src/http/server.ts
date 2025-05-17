@@ -5,6 +5,7 @@ import { createLoginRoute } from "./routes/create-login"
 import { getServiceOrderRoute } from "./routes/get-service-order"
 import { deleteServiceOrderRoute } from "./routes/delete-service-order"
 import { createServiceOrderRoute } from "./routes/create-service-order"
+import { updateFlagUrgenciaRoute } from './routes/update-flag-urgencia'
 import { getClientByCpfRoute } from "./routes/get-client-by-cpf"
 import { getClientsRoute } from "./routes/get-clients"
 import { deleteClientRoute } from "./routes/delete-client"
@@ -34,6 +35,7 @@ app.register(createLoginRoute)
 app.register(getServiceOrderRoute)
 app.register(deleteServiceOrderRoute)
 app.register(createServiceOrderRoute)
+app.register(updateFlagUrgenciaRoute)
 app.register(getClientByCpfRoute)
 app.register(getClientsRoute)
 app.register(deleteClientRoute)
